@@ -7,3 +7,9 @@
 foo.*
 node_modules
 tt.*
+
+# devenv / direnv
+.devenv*
+devenv.local.nix
+devenv.local.yaml
+.direnv
