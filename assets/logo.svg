@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <clipPath id="disc"><circle cx="256" cy="256" r="244"/></clipPath>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16161D"/>
+      <stop offset="0.6" stop-color="#223249"/>
+      <stop offset="1" stop-color="#2D4F67"/>
+    </linearGradient>
+    <linearGradient id="fuji" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#54546D"/>
+      <stop offset="1" stop-color="#1F1F28"/>
+    </linearGradient>
+    <linearGradient id="smoke" gradientUnits="userSpaceOnUse" x1="0" y1="290" x2="0" y2="70">
+      <stop offset="0" stop-color="#727169"/>
+      <stop offset="1" stop-color="#DCD7BA"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.2"/>
+    </filter>
+  </defs>
+  <circle cx="256" cy="256" r="250" fill="#DCD7BA"/>
+  <circle cx="256" cy="256" r="244" fill="url(#sky)"/>
+  <g clip-path="url(#disc)">
+    <circle cx="372" cy="128" r="34" fill="#E6C384" opacity="0.9"/>
+    <g fill="none" stroke="#7E9CD8" stroke-width="2" opacity="0.35" stroke-linecap="round">
+      <path d="M60 180 q30 -14 60 0 M90 205 q24 -10 48 0"/>
+      <path d="M380 220 q30 -14 60 0 M410 245 q24 -10 48 0"/>
+    </g>
+    <!-- Fuji -->
+    <path d="M-10 420 L150 330 C200 300 225 285 238 280 L274 280 C287 285 312 300 362 330 L522 420 L522 530 L-10 530 Z" fill="url(#fuji)"/>
+    <path d="M238 280 L274 280 C287 285 297 291 304 296 L288 300 L274 310 L256 298 L240 310 L222 298 L208 300 C214 292 226 286 238 280 Z" fill="#DCD7BA"/>
+    <path d="M238 280 L274 280 C287 285 297 292 305 297 C292 297 288 308 276 318 C272 306 266 300 250 316 C262 305 260 292 274 280Z" fill="#DCD7BA" opacity="0.0"/>
+    <!-- Waves / lower ground -->
+    <path d="M-10 410 C60 390 120 420 190 405 C260 390 330 425 400 405 C450 392 490 400 522 410 L522 530 L-10 530Z" fill="#16161D" opacity="0.85"/>
+    <!-- smoke dragon -->
+    <g filter="url(#soft)" fill="none" stroke="url(#smoke)" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M256 282 C285 258 215 232 232 202" stroke-width="40" opacity="0.95"/>
+      <path d="M232 202 C245 172 305 188 300 150" stroke-width="30" opacity="0.95"/>
+      <path d="M300 150 C296 118 236 124 252 92" stroke-width="22" opacity="0.95"/>
+      <path d="M252 92 C262 78 282 70 300 74" stroke-width="15" opacity="0.95"/>
+    </g>
+    <!-- smoke puffs -->
+    <g fill="#B8B4D0" opacity="0.35" filter="url(#soft)">
+      <circle cx="205" cy="250" r="16"/><circle cx="198" cy="232" r="10"/>
+      <circle cx="318" cy="196" r="14"/><circle cx="214" cy="140" r="12"/>
+    </g>
+    <!-- dragon head -->
+    <g>
+      <path d="M296 62 C312 56 334 62 346 76 C334 74 322 80 312 90 C304 92 292 88 288 80 Z" fill="#DCD7BA"/>
+      <path d="M296 62 L286 44 M306 60 L304 40" stroke="#C8C093" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      <path d="M346 76 C360 78 370 70 380 74 M342 82 C356 90 368 88 378 96" stroke="#DCD7BA" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <circle cx="318" cy="72" r="3.5" fill="#C34043"/>
+    </g>
+  </g>
+  <circle cx="256" cy="256" r="244" fill="none" stroke="#C8C093" stroke-width="3" opacity="0.6"/>
+</svg>

@@ -1,0 +1,123 @@
+*hokusai.nvim.txt*     Kanagawa and Kansō colors, made to support every plugin
+
+==============================================================================
+Table of Contents                                     *hokusai.nvim-contents*
+
+  1. Introduction                                         |hokusai.nvim-intro|
+  2. Variants                                          |hokusai.nvim-variants|
+  3. Usage                                                |hokusai.nvim-usage|
+  4. Configuration                                       |hokusai.nvim-config|
+  5. Colors                                              |hokusai.nvim-colors|
+  6. Plugins                                            |hokusai.nvim-plugins|
+  7. Credits                                            |hokusai.nvim-credits|
+
+==============================================================================
+1. Introduction                                           *hokusai.nvim-intro*
+
+Hokusai combines the palettes of Kanagawa and Kansō with broad plugin support,
+highlight caching, plugin auto-detection and generated extras for terminals
+and CLI tools.
+
+==============================================================================
+2. Variants                                            *hokusai.nvim-variants*
+
+  Variant   Origin     Background   UI style ~
+  wave      Kanagawa   dark         layered (default dark)
+  dragon    Kanagawa   dark         layered
+  lotus     Kanagawa   light        layered (default light)
+  zen       Kansō      dark         flat
+  ink       Kansō      dark         flat
+  mist      Kansō      dark         flat
+  pearl     Kansō      light        flat
+
+==============================================================================
+3. Usage                                                  *hokusai.nvim-usage*
+
+>vim
+    colorscheme hokusai          " style / light_style based on 'background'
+    colorscheme hokusai-dragon   " a specific variant
+<
+
+Changing 'background' while Hokusai is active switches between the dark and
+light variants.
+
+Lualine: `theme = "hokusai"` (follows the active variant) or
+`theme = "hokusai-<variant>"`.
+Lightline: `let g:lightline = {'colorscheme': 'hokusai'}`
+Barbecue: `require("barbecue").setup({ theme = "hokusai" })`
+
+==============================================================================
+4. Configuration                                         *hokusai.nvim-config*
+
+Call `setup` before loading the colorscheme. Defaults:
+>lua
+    require("hokusai").setup({
+      style = "wave",          -- wave, dragon, lotus, zen, ink, mist, pearl
+      light_style = "lotus",   -- used when 'background' is "light"
+      transparent = false,
+      terminal_colors = true,
+      styles = {
+        comments = { italic = true },
+        keywords = { italic = true },
+        functions = {},
+        variables = {},
+        types = {},
+        sidebars = "auto",     -- "auto", "dark", "normal" or "transparent"
+        floats = "auto",       -- "auto", "dark", "normal" or "transparent"
+      },
+      foreground = "default",  -- "default", "saturated" or { dark = ..., light = ... }
+      minimal = false,         -- reduced syntax palette
+      dim_inactive = false,
+      lualine_bold = false,
+      on_colors = function(colors) end,
+      on_highlights = function(highlights, colors) end,
+      cache = true,
+      plugins = { all = package.loaded.lazy == nil, auto = true },
+    })
+<
+
+`"auto"` for sidebars and floats uses the variant's own look: layered (dark)
+for Kanagawa variants and flat (normal) for Kansō variants.
+
+==============================================================================
+5. Colors                                                *hokusai.nvim-colors*
+
+The ColorScheme passed to `on_colors` and `on_highlights`:
+
+  c.ui       fg, fg_dim, bg, bg_m3..bg_p2, bg_visual, bg_search, pmenu, float, ...
+  c.syn      string, keyword, fun, type, constant, identifier, comment, ...
+  c.diag     error, warning, info, hint, ok
+  c.vcs      added, removed, changed, untracked
+  c.diff     add, delete, change, text
+  c.accent   red, orange, yellow, green, aqua, teal, cyan, blue, violet, pink
+  c.term     16 ANSI colors + 2 extended colors
+  c.palette  all raw named colors (e.g. `c.palette.sumiInk3`)
+
+Derived: `c.bg_float`, `c.bg_sidebar`, `c.bg_popup`, `c.bg_statusline`,
+`c.fg_float`, `c.fg_sidebar`, `c.border`, `c.border_highlight`, `c.rainbow`.
+
+>lua
+    local colors = require("hokusai.colors").setup({ style = "zen" })
+<
+
+==============================================================================
+6. Plugins                                              *hokusai.nvim-plugins*
+
+With lazy.nvim, highlight groups for installed plugins are enabled
+automatically. Enable or disable them with `plugins`:
+>lua
+    plugins = { all = false, auto = false, telescope = true, ["oil.nvim"] = true }
+<
+
+The full list is in `lua/hokusai/groups/` and the README.
+
+==============================================================================
+7. Credits                                              *hokusai.nvim-credits*
+
+- kanagawa.nvim by Tommaso Laurenzi (MIT)
+- kanso.nvim by Webhooked (MIT)
+- tokyonight.nvim by Folke Lemaitre (Apache-2.0)
+
+See the NOTICE file for full attribution.
+
+vim:tw=78:ts=8:noet:ft=help:norl:
