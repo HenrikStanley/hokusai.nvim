@@ -2,7 +2,6 @@
 
 {
   packages = [
-    pkgs.neovim
     pkgs.git
     pkgs.curl
     pkgs.stylua
@@ -15,6 +14,10 @@
     package = pkgs.luajit;
   };
 
+
+  # Test neovim is exposed via HOKUSAI_NVIM rather than put on PATH, so it
+  # never shadows the developer's own `nvim`.
+  env.HOKUSAI_NVIM = "${pkgs.neovim}/bin/nvim";
 
   scripts = {
     test.exec = "./scripts/test \"$@\"";

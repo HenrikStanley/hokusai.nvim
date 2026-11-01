@@ -114,7 +114,7 @@ nested keys such as `${ui.bg}`, `${syn.keyword}` or `${terminal.red_bright}`.
 
 ## Development Environment
 
-A [devenv](https://devenv.sh) setup provides neovim, stylua, selene and
+A [devenv](https://devenv.sh) setup provides stylua, selene and
 markdownlint. With [direnv](https://direnv.net) it loads automatically:
 
 ```sh
@@ -122,11 +122,14 @@ direnv allow       # or: devenv shell
 test | build | docs | fmt | lint
 ```
 
+The neovim used by the scripts is pinned via `$HOKUSAI_NVIM` and is not put on
+`PATH`, so your own `nvim` keeps working inside the shell.
+
 ## Checks
 
 ```sh
 ./scripts/test     # test suite (mini.test via lazy.nvim)
-nvim --headless -u NONE -l scripts/check.lua   # every variant/mode resolves to valid colors
+"${HOKUSAI_NVIM:-nvim}" --headless -u NONE -l scripts/check.lua   # every variant/mode resolves to valid colors
 ./scripts/build    # regenerate extras
 ./scripts/docs     # regenerate README tables and vimdoc
 ```
