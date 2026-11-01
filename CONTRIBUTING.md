@@ -112,6 +112,16 @@ nested keys such as `${ui.bg}`, `${syn.keyword}` or `${terminal.red_bright}`.
 2. Register it in `M.extras` in `lua/hokusai/extra/init.lua`.
 3. Run `./scripts/build` to generate one file per variant in `extras/<tool>/`.
 
+## Development Environment
+
+A [devenv](https://devenv.sh) setup provides neovim, stylua, selene and
+markdownlint. With [direnv](https://direnv.net) it loads automatically:
+
+```sh
+direnv allow       # or: devenv shell
+test | build | docs | fmt | lint
+```
+
 ## Checks
 
 ```sh
